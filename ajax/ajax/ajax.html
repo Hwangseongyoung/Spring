@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spring + Ajax 데이터 전달</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+  <button class="push">데이터 보내기</button>
+  <button class="receive">데이터 가져오기</button>
+
+  <script>
+    document.querySelector(".push").addEventListener('click', function(e) {
+      e.preventDefault();
+
+      let user = {
+        userid: "koreait",
+        passwd: "1234"
+      }
+
+      // ajax(옵션)
+      // 옵션 -> 전송방법, 주소, 타입, 데이터, 성공, (실패)
+      $.ajax({
+        type: "get",
+        url: "http://localhost:9999/receive",
+        dataType: 'json',
+        data: user,
+        success: function() {},
+        failure: function() {}
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스프링에서 데이터 가져오기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+    p {
+      font-style: italic;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <p></p>
+  <button class="receive">데이터 가져오기</button>
+  <button class="send">데이터 서버로 보내기(스프링 확인)</button>
+  
+  <script>
+    document.querySelector(".send").addEventListener('click', function() {
+      // get, setData, 전송 타입 json, 전송데이터,
+      // success: function()
+      let buseo = {
+        code: 100,
+        name: "인사과"
+      }
+
+      $.ajax({
+        type: "get",
+        url: "http://localhost:8989/setData",
+        dataType: "json",
+        data: buseo,
+        success: function(result) {
+          if (result.msg == "success") {
+            alert("데이터 전송이 완료되었습니다.");
+          }else {
+            alert("데이터 전송에 실패했습니다.");
+          }
+        },
+        failure: function(err) {
+          console.err();
+        }
+      });
+    });
+
+
+    document.querySelector(".receive").addEventListener('click', function() {
+      // 전송타입, 주소, 데이터통신방법, success()
+
+      $.ajax({
+        type: "post",
+        url: "http://localhost:8989/getData",
+        dataType: "json",
+        // Spring 데이터는 매개변수로 넘어온다.
+        success:function(result) {
+          // console.log(result.email);
+          // console.log(result.passwd);
+          document.querySelector("p").innerText = `이메일 : ${result.email}, 이름 : ${result.name}, 비밀번호 : ${result.passwd}, 나이: ${result.age}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

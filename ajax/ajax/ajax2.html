@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>스프링에서 데이터 가져오기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+  <p></p>
+  <button>데이터 가져오기</button>
+  
+  <script>
+    document.querySelector("button").addEventListener('click', function() {
+      // 전송타입, 주소, 데이터통신방법, success()
+
+      $.ajax({
+        type: "post",
+        url: "http://localhost:8989/getData",
+        dataType: "json",
+        // Spring 데이터는 매개변수로 넘어온다.
+        success:function(result) {
+          console.log(result.email);
+          console.log(result.passwd);
+          // document.querySelector("p").innerText = `이메일 : ${result.email}, 이름 : ${result.name}, 비밀번호 : ${result.passwd}, 나이: ${result.age}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
