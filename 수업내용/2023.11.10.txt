@@ -1,0 +1,96 @@
+스프링 + 웹(서버 : tomcat)
+1. tomcat 별도 설치 -> Spring framework
+2. 내장형 tomcat -> Spring Boot
+- 과정형 자격증 웹 : jsp + oracle
+
+3. tools
+jetBrain
+- intelli j(com, ulti)
+
+
+ibm
+-eclipse - sts
+
+-> android studio
+
+--------------------------------------------------------------
+
+view
+ajax -> javascript -> jquery(추가 lib)
+
+server -> 스프링부터에서 사용할 내장형 tomcat 또는 추가 프로그램
+web(필수), lombok, thymeleaf(html+프로그래밍), mysql
+
+maven 데이터베이스 + 스프링 연결
+- @ 어노테이션 : 부트 version 3.0
+- xml
+
+ -> start.spring.io
+
+localhost:8080
+코드 오류
+
+internal
+
+
+도메인 : 8080
+mysql oracle spring
+
+java -> 자바파일
+resource
+ - static : css, js, images
+ - template : html
+
+application 서버 설정
+
+com.example.ajax
+
+controller : 실행주소관리 또는 파일 전달
+AjaxController.java
+
+http://도메인.포트:9999/실행주소
+localhost:9999/hello
+
+7000 ~ 9999
+
+localhost:9999/resgister
+localhost:9999/login
+
+localhost:9999/welcome
+
+localhost:9999/getjs
+
+localhost:9999/setjs
+
+
+<a href="/getjs"/>저장</a>
+a 태그로 만들어진 것 또는 브라우저 주소 뒤에 드러나도 문제없는
+<form method="get">
+
+<form method="post">
+
+get 또는 post
+
+서버(spring) <- json -> 클라이언트(html, js)
+
+------------------------------------------------------------------------------------------------------
+
+jquery.com
+
+웹 : 프로그램이 다르면 접근X
+
+-------------------------------------------------------------------------------------------------------
+
+http://localhost:8989/getData
+controller
+- AjaxController
+
+http://localhost:8989/test
+
+--------------------------------------------------------------------------------------------------------
+
+보안레이어
+SSL : 서버에 설치
+https://
+
+http://
