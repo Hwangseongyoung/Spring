@@ -1,0 +1,30 @@
+start.spring.io -> web 의존성관리(프로그램 설치) 필수
+ - html 작업 : thymeleaf
+ - 객체 작업 생략 : lombok
+
+TestController
+TestDto
+TestService
+TestMapper
+
+패키지(프로그램 동작X)
+controller : 주소 또는 데이터 출력 또는 html로 전달
+ @Controller 주소관리
+ @ResponseBody 데이터관리(json)
+ = @RestController
+
+entity(dto) : 객체
+ @Data
+
+(service) : 추가 작업이 필요할 때(paging)
+ @Service
+
+repository(mapper) : 데이터베이스 자료 처리(DML)
+ @Repository
+
+-----------------------------------------------------------------
+
+thymeleaf 선언문
+
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
