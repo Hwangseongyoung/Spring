@@ -1,0 +1,56 @@
+maven repository
+
+<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.2.0</version>
+</dependency>
+
+
+프로그램 설치 -> spring 10
+
+web
+
+dependencies : 내가 알아서 다 설치
+
+
+주소 관리
+
+관리자 페이지 /admin
+- 사원목록 : /admin/empList
+
+사용자 페이지 /users 시작
+- 로그인 : /users/login
+- 회원가입 : /users/register
+
+사이트 첫 페이지는 /web
+사이트 회사소개 /web/company
+
+
+html > db > controller
+
+
+artifact 이름 아래에 패키지 생성
+controller
+ - WebController.java
+dto
+mappers
+service
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------
+
+templates
+index.html
+ - admin
+	/admin/admin
+	/admin/employees
+	/admin/article
+	/admin/site
+
+ - users
