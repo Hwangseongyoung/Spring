@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 페이지</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+
+<body>
+  <a href="/">메인페이지</a>
+  <a href="/users/login">로그인</a>
+
+  <h1>회원가입 페이지</h1>
+  <p></p>
+  <button class="btn1">서버 정보 가져오기</button>
+  <button class="btn2">클라이언트가 서버로 정보 보내기</button>
+
+  <script>
+    document.querySelector(".btn1").addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // jquery
+      $.ajax({
+        type: "get",
+        url: "/users/getAjax",
+        dataType: "json",
+        success: function(result){
+          // 화면 표시
+          let res = result.userid +" "+ result.passwd;
+          document.querySelector("p").innerText = res;
+        },
+        failure: function(){
+
+        }
+      });
+    });
+
+
+    document.querySelector(".btn2").addEventListener('click', function (e) {
+      e.preventDefault();
+
+      let obj = {
+        userid: "koreait",
+        passwd: "1234"
+      }
+
+      // jquery
+      $.ajax({
+        type: "post",
+        url: "/users/setAjax",
+        dataType: "json",
+        data: obj,
+        success: function(result){
+          alert(result.msg);
+        },
+        failure: function(){
+          alert("데이터 전송 실패");
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

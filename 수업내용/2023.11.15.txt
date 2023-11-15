@@ -1,0 +1,29 @@
+1. 게시판 -> 회원가입 -> 다중게시판 => 사이트관리
+2. 메뉴 -> 데이터 전달 -> ajax
+
+vscode -> intellij
+
+html > (db) > 객체, controller -> mappers -> (service) => controller
+
+templates
+
+admin
+주소			   파일명
+/admin 			> /admin/index.html
+/admin/employees	> /admin/employees.html
+/admin/article		> /admin/article.html
+
+users
+/users/login		> /users/login.html
+/users/register		> /users/register.html
+
+""			> index.html
+
+---------------------------------------------------------------------------------------------
+
+회원가입
+
+/users/register		->	/users/register.html
+
+---------------------------------------------------------------------------------------------
+

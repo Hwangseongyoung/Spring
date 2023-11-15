@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 페이지 - form 전송</title>
+</head>
+<body>
+  <h1>회원가입 페이지 - form 전송</h1>
+  <form action="/users/register" method="post" onsubmit="return frmCheck()">
+    <ul>
+      <li>
+        <label>이메일</label>
+        <input type="text" name="email" />
+      </li>
+      <li>
+        <label>비밀번호</label>
+        <input type="password" name="passwd" />
+      </li>
+      <li>
+        <input type="submit" value="회원가입" />
+      </li>
+    </ul>
+  </form>
+
+  <script>
+    function frmCheck() {
+      let email = document.querySelector("input[name='email']");
+      let passwd = document.querySelector("input[name='passwd']");
+
+      if(email.value == '') {
+        alert("이메일을 입력하세요.");
+        email.focus();
+        return false;
+      }
+      if(passwd.value == '') {
+        alert("비밀번호를 입력하세요.");
+        passwd.focus();
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

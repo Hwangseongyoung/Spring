@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 페이지 > ajax</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+  <form>
+    <ul>
+      <li>
+        <label>이메일</label>
+        <input type="text" class="email" />
+      </li>
+      <li>
+        <label>비밀번호</label>
+        <input type="password" class="passwd" />
+      </li>
+      <li>
+        <button class="btn">회원가입</button>
+      </li>
+    </ul>
+  </form>
+
+  <script>
+    let btn = document.querySelector(".btn");
+
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      let emailValue = document.querySelector(".email").value;
+      let passwdValue = document.querySelector(".passwd").value;
+
+      let obj = {
+        email: emailValue,
+        passwd: passwdValue
+      };
+
+      $.ajax({
+        type: "post",
+        url: "/users/register",
+        dataType: "json",
+        data: obj,
+        success: function(result) {
+          // document.querySelector(".email").value = "";
+          // document.querySelector(".passwd").value = "";
+          // alert(result.msg);
+
+          // document.querySelector(".email").focus();
+
+          // if(result.status == "200") {
+          //   alert(result.msg);
+          // }
+
+          // {} -> for in
+          // [] -> 배열명.forEach();
+
+          // for(let 별명 in 객체명) {}
+
+          for(let res in result) {
+            // console.log(`키 값은 ${res}입니다.`);
+            // console.log(`출력되는 값은 ${result[res]}입니다.`);
+            if(result[res] == "200") {
+              alert(result["msg"]);
+            }
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>로그인 페이지</title>
+</head>
+<body>
+    <a href="/">메인페이지</a>
+    <a href="/users/register">회원가입</a>
+
+    <h1>로그인 페이지</h1>
+    <form>
+        <ul>
+            <li>
+                <label>아이디</label>
+                <input type="text" name="userid" class="userid"/>
+            </li>
+            <li>
+                <label>비밀번호</label>
+                <input type="password" name="passwd" class="passwd" />
+            </li>
+            <li>
+                <input type="submit" value="로그인" class="btn"/>
+            </li>
+        </ul>
+    </form>
+
+    <script>
+        document.querySelector(".btn").addEventListener('click', function(e) {
+            e.preventDefault();
+
+            let userid = document.querySelector(".userid");
+            let passwd = document.querySelector(".passwd");
+
+            if(userid.value == "") {
+                alert("아이디를 입력하세요.");
+                userid.focus();
+                return false;
+            }
+            if(passwd.value == "") {
+                alert("비밀번호를 입력하세요.");
+                passwd.focus();
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>
