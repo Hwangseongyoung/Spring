@@ -1,0 +1,53 @@
+tut05
+
+html -> db -> 객체, Controller -> (service) -> mappers
+
+web, thymeleaf, mysql
+
+emp_name -> empName  => 한 줄 코드를 작성하면 변환가능
+
+
+Spring Query 사용하는 방법 mybatis(xml)
+
+
+사용자 이름, 비번 저장
+
+주소			파일
+/users/insert		/users/insert.html
+/users/list		/users/list.html
+
+
+db query 저장
+/static/youngdb.sql
+
+패키지
+dto > UsersDto.java
+
+패키지	  인터페이스 : interface -> 본체가 없는 이름만 필요
+mappers > UsersMapper
+
+------------------------------------------------------------------------------------------------
+
+주소			문서
+/member			/member/list.html
+/member/add		/member/add.html
+
+pk, 아이디, 비밀번호
+db/db.sql
+
+tut06
+- controller
+- dto
+- mappers
+- service
+
+
+<tr>
+ <td>1</td>
+ <td>2</td>
+ <td>3</td>
+ <td>
+  <a href="">수정</a>
+  <a href="">삭제</a>
+ </td>
+</tr>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <title>Member List</title>
+  <style>
+    td {
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <a href="/member/add">Add Member</a>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <td>Member No.</td>
+          <td>Member ID.</td>
+          <td>Member Pwd.</td>
+          <td>Member Marks.</td>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    $(function() {
+      $.ajax({
+        type: "get",
+        url: "/member/getMembers",
+        dataType: "json",
+        success: function(result) {
+          let output = ""; //데이터(tr>td) 이어 붙이기
+          result.members.forEach( (m) => {
+            output += `<tr>
+                        <td>${m.num}</td>
+                        <td>${m.userid}</td>
+                        <td>${m.passwd}</td>
+                        <td>
+                          <a href="">수정</a>
+                          <a href="">삭제</a>
+                        </td>
+                      </tr>`;
+          });
+          document.querySelector("tbody").innerHTML = output;
+        }
+     });
+    });
+  </script>
+</body>
+</html>

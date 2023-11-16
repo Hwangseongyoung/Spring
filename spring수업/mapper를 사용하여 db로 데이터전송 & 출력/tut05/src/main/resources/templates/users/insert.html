@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사용자 등록하기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    .container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    form {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/users">사용자 목록 보기</a>
+    <form action="/users/insert" method="post" onsubmit="return frmCheck()">
+      <ul>
+        <li>
+          <label>이메일</label>
+          <input type="text" name="email"/>
+        </li>
+        <li>
+          <label>비밀번호</label>
+          <input type="password" name="passwd"/>
+        </li>
+        <li>
+          <input type="submit" value="회원가입"/>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <script>
+    function frmCheck() {
+      let email = document.querySelector("input[name='email']");
+      let passwd = document.querySelector("input[name='passwd']");
+
+      if(email.value == '') {
+        alert("이메일을 입력해주세요.");
+        email.focus();
+        return false;
+      }
+      if(passwd.value == '') {
+        alert("비밀번호를 입력해주세요.");
+        passwd.focus();
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
