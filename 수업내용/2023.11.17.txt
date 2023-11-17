@@ -1,0 +1,58 @@
+1.
+- 변수, 객체
+- 변수, 리스트 -> map
+
+return "success";
+return list;
+map.put("msg", "success");
+map.put("list", list);
+
+react library(framework) -> 느슨한 규칙
+spring, Angular framework
+
+2. Spring Framework : 규칙을 지켜라
+EJB(Java)
+
+String path = "c:\\temp";
+
+@Path
+String path = "c:\\temp";
+
+
+----------------------------------------------------------------------
+
+Ajax - crud
+
+list는 다보는거라서 QueryString 필요없다
+
+QureyString
+- delete?num=1
+- update?num=1
+- view?num=1
+
+
+쇼핑몰 shop
+
+list : 목록, 상품수
+
+Ajax, Thymeleaf, mysql, web, mybatis
+
+crud
+
+관리자
+/admin/addItem		=>	/admin/addItem.html *
+/admin/deleteItem	=>	/admin/deleteItem.html
+/admin/updateItem	=>	/admin/updateItem.html *
+
+사용자
+/users			=>	/users/itemList.html
+/users/viewItem		=>	/users/view.html *
+
+* -> 형태가 비슷해서 복사해서 수정하는 느낌으로 사용
+
+controller @Controller
+dto
+mappers @Mapper
+service @Service
+
+h -> db 생성 -> 객체,  controller -> (s) -> mappers

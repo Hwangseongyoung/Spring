@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상품 상세 보기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    tr {
+      height: 40px;
+    }
+
+    tr td {
+      border: 1px solid #ccc;
+    }
+
+    tr td:nth-child(1) {
+      width: 40%;
+      background-color: #254def;
+      color: #fff;
+      text-align: center;
+    }
+
+    tr td:nth-child(2) {
+      background-color: #fff;
+      text-align: center;
+    }
+
+    p {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>코리아아이티 상품 리스트</h2>
+    <table>
+      <tr>
+        <td>상품번호</td>
+        <td>[[${item.itemId}]]</td>
+      </tr>
+      <tr>
+        <td>상품명</td>
+        <td>[[${item.itemName}]]</td>
+      </tr>
+      <tr>
+        <td>상품가격</td>
+        <td>[[${item.itemPrice}]]</td>
+      </tr>
+    </table>
+    <div>
+      <p>
+        <a href="/users">상품목록</a>
+        <a href="/admin/addItem">상품등록</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
