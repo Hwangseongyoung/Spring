@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/js/jquery.js"></script>
+</head>
+<body>
+  <select class="deptCode" id="dept" onchange="getPos()"></select>
+  <select class="posCode" id="pos">
+    <option value="">---직책 선택---</option>
+  </select>
+  <a href="/dept/multi">직책 등록</a>
+
+  <script>
+    function getPos() {
+      let sel = document.querySelector("#dept");
+      // alert(sel.options[sel.selectedIndex].value);
+
+      let obj = {
+        deptCode: sel.options[sel.selectedIndex].value
+      }
+      $.ajax({
+        type: "post",
+        url: "/pos/getPos",
+        dataType: "json",
+        data: obj,
+        success: function(result) {
+          let output = "<option value=''>---직책 선택---</option>";
+
+          result.pos.forEach((p) => {
+            output += `<option value="${p.posCode}">${p.posName}</option>`;
+          });
+          document.querySelector("#pos").innerHTML = output;
+        }
+      });
+    }
+
+    $(function() {
+      $.ajax({
+        type: "post",
+        url: "/dept/sel",
+        dataType: "json",
+        success: function(result) {
+          let output = "<option value=''>---부서 선택---</option>";
+          result.dept.forEach( (d) => {
+            output += `<option value="${d.deptCode}">${d.deptName}</option>`;
+          });
+
+          document.querySelector("#dept").innerHTML = output;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

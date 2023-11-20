@@ -1,0 +1,12 @@
+1. controller, mappers, dto, service
+
+2. templates
+/dept/sel		->	dept/sel.html
+
+3. static
+js/jquery.js
+
+-----------------------------------------------------------------------------
+
+multiple.html
+대분류, 소분류
