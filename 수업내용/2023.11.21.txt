@@ -1,0 +1,21 @@
+1. 회원가입(CRUD) + 로그인
+- thymeleaf
+- ajax(X)
+- 디자인(X)
+
+artifact : member
+
+/			index.html
+/register		register.html
+/login			login.html
+
+/member			member/list.html
+/member			member/insert.html
+/member/delete
+/member/update		member/update.html
+/member/view		member/view.html
+
+
+----------------------------------------------------------------------
+
+<tr th:each="별명 : ${controller 변수명}">
