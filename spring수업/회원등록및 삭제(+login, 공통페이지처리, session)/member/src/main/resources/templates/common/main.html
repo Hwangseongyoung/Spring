@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{common/layout::head_f}"></head>
+<body>
+  <!-- insert : 부분 변경 -->
+  <header th:insert="~{common/header.html::header_f}"></header>
+
+  <!-- replace : 전체 변경 -->
+  <div th:replace="~{common/header.html::nav_f}">
+    <a href="">로그인</a>
+    <a href="">회원가입</a>
+  </div>
+  <hr/>
+  
+  <section>페이지 메인</section>
+  <hr/>
+  
+  <footer th:insert="~{common/footer::footer_f('Koreait Academy', '055.000.0000')}"></footer>
+</body>
+</html>

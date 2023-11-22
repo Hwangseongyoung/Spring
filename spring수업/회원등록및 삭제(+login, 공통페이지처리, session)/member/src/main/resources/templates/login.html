@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코리아아이티 아카데미 > Login</title>
+</head>
+<body>
+  <nav th:insert="~{fragment/nav.html::nav_f}"></nav>
+  <h1>코리아아이티 아카데미 로그인 페이지</h1>
+
+  <p>[[${msg}]]</p>
+  <form action="/login" method="post">
+    <ul>
+      <li>
+        <label>아이디</label>
+        <input type="text" name="userid" required/>
+      </li>
+      <li>
+        <label>비밀번호</label>
+        <input type="password" name="passwd" required/>
+      </li>
+      <li>
+        <input type="submit" value="로그인" />
+      </li>
+    </ul>
+  </form>
+</body>
+</html>

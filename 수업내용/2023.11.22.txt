@@ -1,0 +1,24 @@
+common
+~{}
+layout
+lib
+
+CommonController
+
+common
+- main.html
+- header.html
+- footer.html
+
+fragment
+- insert : 내용을 공유 <h1>변경</h1>
+- replace : 태그 전체를 공유 <h1></h1>
+
+* 공통 페이지 처리 : view 전용 프로그램
+
+-----------------------------------------------------------------------------
+
+fragment
+- nav.html
+
+insert 방식
