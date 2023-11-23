@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  [[${filename}]]
+  <h1>업로드 이미지 출력</h1>
+  <img th:src="@{|${filename}|}" width="150px" height="150px" />
+
+  <a th:href="@{/upload}">업로드 페이지로 이동</a>
+</body>
+</html>

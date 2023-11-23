@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코리아아이티 아카데미 > Member > List</title>
+  <style>
+    td {
+      border: 1px solid #ccc;
+    }
+
+    button {
+       cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- <th:block th:if="${#strings.isEmpty(session.user)}">
+    <script th:inlin="javascript">
+      /*<![CDATA[*/
+        alert("비정상적인 접근입니다.\n로그인 후 접속하세요.");
+        history.go(-1);
+      /*]]>*/
+    </script>
+  </th:block>
+  <th:block th:unless="${#strings.isEmpty(session.user)}">
+    <h1>[[${session.user.userid}]] / [[${session.user.username}]]</h1>
+  </th:block> -->
+  
+  <th:block th:unless="${#strings.isEmpty(session.user)}">
+    <h1>[[${session.user.userid}]] / [[${session.user.username}]]</h1>
+  </th:block>
+
+  <nav th:insert="~{fragment/nav.html::nav_f}"></nav>
+  <h1>코리아아이티 아카데미 회원 목록 페이지</h1>
+
+  <p style="background-color: #0f0; color: #fff;">[[${msg}]]</p>
+  <!-- <p style="background-color: #0f0; color: #fff;" th:text="${msg}"></p> -->
+
+  <!-- <script th:inline="javascript">
+    alert([[${msg}]]);
+  </script> -->
+
+  게시물 수 : [[${cnt}]]개
+
+  <form method="get" action="/member" onsubmit="return searchList()">
+    <select name="searchType" id="searchType">
+      <option value="">선택</option>
+      <option value="userid">아이디</option>
+      <option value="username">이름</option>
+    </select>
+    <input type="text" name="words" placeholder="검색어 입력" />
+    <input type="submit" value="검색" />
+  </form>
+
+  <table style="border-collapse: collapse;">
+    <tr>
+      <td>번호</td>
+      <td>아이디</td>
+      <td>비밀번호</td>
+      <td>사용자이름</td>
+      <td>가입일</td>
+      <td>비고</td>
+    </tr>
+    <tr th:each="m: ${mem}">
+      <td>
+        <a th:href="@{/member/view?(id=${m.id})}">
+          [[${m.id}]]
+        </a>
+      </td>
+      <td>[[${m.userid}]]</td>
+      <td>[[${m.passwd}]]</td>
+      <td>[[${m.username}]]</td>
+      <td>[[${m.regdate}]]</td>
+      <td>
+        <button th:onclick="viewMember([[${m.id}]])">보기</button>
+        <button th:onclick="updateMember([[${m.id}]])">수정</button>
+        <button th:onclick="deleteMember([[${m.id}]])">삭제</button>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    function updateMember(mid) {
+      location.href="/member/update?id=" + mid;
+    }
+
+    function viewMember(mid) {
+      location.href="/member/view?id=" + mid;
+    }
+
+    function deleteMember(mid) {
+      if(confirm("회원정보를 삭제하시겠습니까?")) {
+        location.href="/member/delete?id=" + mid;
+      }
+    }
+
+    function searchList() {
+      let searchType = document.querySelector("#searchType");
+      let words = document.querySelector("input[name=words]");
+
+      if(searchType.options[searchType.selectedIndex].value == "") {
+        alert("검색 타입을 선택하세요.");
+        searchType.focus();
+        return false;
+      }
+
+      if(words.value == "") {
+        alert("검색어를 입력하세요.");
+        words.focus();
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

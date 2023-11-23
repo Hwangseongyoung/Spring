@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <nav th:fragment="nav_f">
+    <a th:href="@{/}">코리아아이티 메인 페이지</a>
+    <a th:href="@{/member/insert}">회원가입</a>
+
+    <th:block th:if="${#strings.isEmpty(session.user)}">
+      <a th:href="@{/login}">로그인</a>
+    </th:block>
+
+    <th:block th:unless="${#strings.isEmpty(session.user)}">
+      <a th:href="@{/logout}">로그아웃</a>
+    </th:block>
+  </nav>
+</body>
+</html>
