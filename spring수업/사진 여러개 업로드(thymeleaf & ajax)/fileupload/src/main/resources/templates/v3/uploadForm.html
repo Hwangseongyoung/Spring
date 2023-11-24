@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ajax 업로드하기</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>AJAX 업로드하기</h1>
+  <form id="upload-form">
+    <input type="file" name="files" multiple />
+    <button class="btn">AJAX UPLOAD</button>
+  </form>
+
+  <br/><br/><br/><br/><br/>
+
+  <h1>AJAX 이미지 출력하기</h1>
+  <div id="wrap">
+    
+  </div>
+
+  <script>
+    document.querySelector(".btn").addEventListener('click', function(e) {
+      e.preventDefault();
+
+      let formData = new FormData();
+      let uploadData = document.querySelector("#upload-form")[0].files;
+      // console.log(uploadData);
+
+      for(let i=0;i<uploadData.length;i++) {
+        formData.append("files", uploadData[i]);
+      }
+
+      $.ajax({
+        type: "post",
+        url: "/v3/upload",
+        dataType: "json",
+        data: formData,
+        contentType: false, // false -> 인코딩 타입 멀티로 지정
+        processData: false,
+        success: function(result) {
+          let output = "";
+          
+          result.forEach( (r) => {
+            // console.log(r.oriName);
+            output += `<p>
+                        <img src="/${r.saveFileName}" alt="" width="150px" height="150px" />
+                      </p>
+                      <p>
+                        <a href="/download?savePathFileName=${r.savePathFileName}">다운로드</a>
+                      </p>`;
+          });
+          document.querySelector("#wrap").innerHTML = output;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

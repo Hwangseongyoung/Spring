@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단일파일 업로드보기</title>
+</head>
+<body>
+  <h2>단일 파일 업로드 보기</h2>
+  <p>
+    <img th:src="@{|/${folderName}/${saveFileName}|}" width="150px" height="150px"/>
+  </p>
+  <p>
+    <a th:href="@{|/download?savePathFileName=${savePathFileName}|}">다운로드</a>
+  </p>
+  <p>
+    <a th:href="@{/upload}">업로드 페이지로 이동</a>
+  </p>
+</body>
+</html>
