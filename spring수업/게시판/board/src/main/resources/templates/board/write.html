@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코리아아이티 아카데미 > QnA 게시판 > 글 쓰기</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+
+    .wrap {
+      box-shadow: 0 0 5px 0.25rem #eee;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 98%;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 3px;
+    }
+
+    .input {
+      padding: 0.4rem 0.75rem;
+      font-size: 16px;
+      color: #212529;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      display: block;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .width-100 {
+      width: 100%;
+    }
+
+    .width-15 {
+      width: 15%;
+    }
+
+    .height-400 {
+      height: 400px;
+      resize: none;
+    }
+
+    li {
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+
+    .input:focus {
+      box-shadow: 0 0 0 2px #86b7fe inset;
+    }
+
+    .btn2 {
+      padding: 5px 12px;
+      color: #fff;
+      border-radius: 3px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .blue {
+      background-color: #2185d0;
+    }
+
+    .red {
+      background-color: #db2828;
+    }
+
+    .noto {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h3>코리아아이티 아카데미 > QnA 게시판 > 글 쓰기</h3>
+    <form action="/board/write" method="post" enctype="multipart/form-data" onsubmit="return frmCheck()">
+      <ul>
+        <li>
+          <label>제목</label>
+          <input type="text" name="subject" class="input width-100 noto"/>
+        </li>
+        <li>
+          <label>작성자</label>
+          <input type="text" name="writer" class="input width-15 noto"/>
+        </li>
+        <li>
+          <label>내용</label>
+          <textarea type="text" name="content" class="input width-100 height-400 noto"></textarea>
+        </li>
+        <li>
+          <label>첨부파일</label>
+          <input type="file" name="file" class="input width-100"/>
+        </li>
+        <li>
+          <input type="submit" value="글저장" class="btn2 red"/>
+          <input type="reset" value="목록" class="btn2 blue" onclick="move()"/>
+        </li>
+      </ul>
+    </form>
+  </div>
+
+  <script>
+    window.onload = function() {
+      document.querySelector("input[name=subject]").focus();
+    }
+
+    let subject = document.querySelector("input[name=subject]");
+    let writer = document.querySelector("input[name=writer]");
+    let content = document.querySelector("textarea[name=content]");
+    let submit = document.querySelector("input[type=submit]");
+
+    function frmCheck() {
+      if(subject.value == "") {
+        alert("게시물 제목을 입력해 주세요.");
+        subject.focus();
+        return false;
+      }
+      if(!writer.value) {
+        alert("게시물 작성자를 입력해 주세요.");
+        writer.focus();
+        return false;
+      }
+      if(content.value == "") {
+        alert("게시물 내용을 입력해 주세요.");
+        content.focus();
+        return false;
+      }
+    }
+      
+    function move() {
+      location.href="/board/list";
+    }
+  </script>
+</body>
+</html>
