@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>코리아아이티 아카데미 > 글 목록보기</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+
+    .wrap {
+      box-shadow: 0 0 5px 0.25rem #eee;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 98%;
+      margin: 10px auto;
+      padding: 10px;
+      border-radius: 3px;
+    }
+
+    form {
+      text-align: right;
+      margin-bottom: 5px;
+    }
+    
+    .searchType, .words {
+      padding: 0.4rem 0.75rem;
+      font-size: 16px;
+      color: #212529;
+      background-color: #fff;
+      border: 1px solid #ced4da;
+    }
+
+    .btn {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #0b5ed7;
+      padding: 5px 15px;
+      font-size: 14px;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+
+    th, td {
+      border: 1px solid #eee;
+    }
+
+    tr {
+      height: 45px;
+    }
+
+    tr:first-child {
+      background-color: #f7f7f7;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    td:nth-child(2) {
+      text-align: left;
+      padding-left: 8px;
+    }
+
+    .btn2 {
+      padding: 5px 12px;
+      color: #fff;
+      border-radius: 3px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .blue {
+      background-color: #2185d0;
+    }
+
+    .red {
+      background-color: #db2828;
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .bottom-center a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-color: #000;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-size: 14px;
+    }
+
+    .cnt {
+      color: #f00;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    a.active:hover {
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .top {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h3>코리아아이티 아카데미 > QnA 게시판 > 글 목록보기</h3>
+
+    <form action="/board/list" method="get">
+      <div class="top">
+        <span>
+          전체 게시물 수 : <span class="cnt">[[${cnt}]]</span> 개
+        </span>
+        <div>
+          <select name="searchType" class="searchType">
+            <option value="subject">제목</option>
+            <option value="writer">작성자</option>
+            <option value="content">내용</option>
+          </select>
+          <input type="text" name="words" class="words" required/>
+          <input type="submit" class="btn" value="검색"/>
+        </div>
+      </div>
+    </form>
+
+    <table>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>조회수</th>
+        <th>등록일</th>
+        <th>첨부파일</th>
+        <th>비고</th>
+      </tr>
+      <tr th:each="korBoard: ${list}">
+        <td>[[${korBoard.id}]]</td>
+        <td>
+          <th:block th:if="${korBoard.depth > 1}">
+            <th:block th:each="seq: ${#numbers.sequence(2, korBoard.depth)}">
+              &nbsp; <span style="color: #f00">[Re]</span>
+            </th:block>
+          </th:block>
+
+          <a th:href="@{/board/view?(id=${korBoard.id})}" class="active">
+            [[${korBoard.subject}]]
+          </a>
+        </td>
+        <td>[[${korBoard.writer}]]</td>
+        <td>[[${korBoard.visit}]]</td>
+        <td>[[${korBoard.regdate}]]</td>
+        <td>
+          <th:block th:if="${not #strings.isEmpty(korBoard.orgName)}">
+            <i class="fa-solid fa-file" style="color: #f00;"></i>
+          </th:block>
+          <th:block th:unless="${not #strings.isEmpty(korBoard.orgName)}">
+            -
+          </th:block>
+        </td>
+        <td>
+          <a href="" class="btn2 blue">수정</a>
+          <a href="#" class="btn2 red" th:onclick="remove([[${korBoard.id}]])">삭제</a>
+        </td>
+      </tr>
+    </table>
+    <div class="bottom">
+      <div class="bottom-left">
+        <a th:href="@{/board/list}" class="btn2 blue">목록으로</a>
+      </div>
+
+      <div class="bottom-center">
+        <a href="">1</a>
+      </div>
+
+      <div class="bottom-right">
+        <a th:href="@{/board/write}" class="btn2 red">글쓰기</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function remove(id) {
+      if(confirm(id + "번 게시물을 삭제 하시겠습니까?")) {
+        location.href="/board/delete?id="+id;
+      }
+    }
+  </script>
+</body>
+</html>
