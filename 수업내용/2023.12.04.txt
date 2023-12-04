@@ -1,0 +1,40 @@
+실행 전에 가로채기
+실행 후에 가로채기
+
+interceptor
+- SessionCheckInterceptor.java
+- @Component
+  HandlerInterceptor 오버라이딩
+
+board/list -> (interceptor) -> 실행
+
+MemberInfo session 등록된 사람만 볼 수 있게...
+HttpSession...
+
+===>
+WebConfig
+Interceptor 예외 처리
+
+--------------------------------------------------------------------
+
+multiple
+- config
+- interceptor
+- controller
+- service
+- mappers
+- dto
+
+static
+- css
+- images
+- sql
+- upload
+
+template
+- config
+- board
+- index.html, login.html, register.html
+
+reset.css
+login.css
