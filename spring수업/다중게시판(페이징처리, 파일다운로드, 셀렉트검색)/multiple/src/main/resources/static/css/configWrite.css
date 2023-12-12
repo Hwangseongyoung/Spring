@@ -1,0 +1,35 @@
+@charset 'utf-8';
+
+.wrap {
+  max-width: 100%;
+  font-size: 14px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #eee;
+  background-color: #fff;
+  box-shadow: 0 0 1px 1px #eee;
+}
+
+.top i {
+  color: #0d6efd;
+}
+
+th {
+  width: 15%;
+  background-color: var(--table-bg-color);
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid var(--table-border-color);
+}
+
+select {
+  width: 10%;
+}
+
+.bottom {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
