@@ -1,0 +1,9 @@
+Model 1
+Model 2 -> Spring MVC
+
+jsp -> html -> java(jsp)
+이클립스, 오라클, 외장형 Tomcat
+j2ee 다운로드 압축해제
+Tomcat 다운로드 압축해제 -> 이클립스 등록 사용
+
+JSP -> Tomcat

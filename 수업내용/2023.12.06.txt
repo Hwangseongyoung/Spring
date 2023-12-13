@@ -1,0 +1,33 @@
+HRD_1234
+
+ojdbc 버전 확인
+
+ojdbc.jar 11
+
+ojdbc 11, 14버전
+
+apache.org
+
+mail.apache.org
+
+www.eclipse.org
+tomcat.apache.org 9버전
+
+C:\hrdKorea
+- util
+- source
+
+Model 1
+Model 2 -> Spring MVC
+
+jsp -> html -> java(jsp)
+이클립스, 오라클, 외장형 Tomcat
+j2ee 다운로드 압축해제
+Tomcat 다운로드 압축해제 -> 이클립스 등록 사용
+
+JSP -> Tomcat
+
+
+virtual-hosting -> 가상호스팅
+
+webapp -> 인텔리제이에서 resources
